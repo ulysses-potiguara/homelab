@@ -1,0 +1,18 @@
+# For Debian based distro
+# Save it under /etc/systemd/system/throttling.service
+# Then run
+# systemctl daemon-reload
+# systemctl enable throttling.service
+# systemctl start throttling.service
+
+[Unit]
+Description=Homelab CPU Throttling Monitor
+After=network.target
+
+[Service]
+ExecStart=/home/scripts/governor.sh # Change it to where you save the script
+Restart=always
+User=root # Change it to the user you want to run the script
+
+[Install]
+WantedBy=multi-user.target
